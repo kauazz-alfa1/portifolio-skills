@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ============================================================
+     SEO BÁSICO — ALTERE os campos abaixo com os seus dados
+     ============================================================ -->
+<title>Nome Sobrenome — Sites que vendem para o seu negócio local</title>
+<meta name="description" content="Criação de sites e landing pages rápidas, modernas e focadas em vender mais para hamburguerias, oficinas, barbearias e clínicas. Orçamento gratuito pelo WhatsApp.">
+<meta name="theme-color" content="#0A0E1A">
+
+<!-- ============================================================
+     OPEN GRAPH — usado na pré-visualização do link no WhatsApp/redes.
+     ALTERE og:url e og:image para o endereço real do seu site depois
+     de publicar (ex: na Vercel/Netlify).
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nome Sobrenome — Sites que vendem para o seu negócio local">
+<meta property="og:description" content="Landing pages rápidas e modernas para negócios locais, com integração direta ao WhatsApp.">
+<meta property="og:url" content="https://seu-dominio.com.br">
+<meta property="og:image" content="https://seu-dominio.com.br/preview.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     TOKENS — paleta, tipografia e escala usadas em toda a página
+     ========================================================= */
+  :root{
+    --bg:            #0A0E1A;
+    --bg-elevated:   #10162A;
+    --surface:       #141B2E;
+    --surface-2:     #1A2238;
+    --border:        #232B44;
+    --text:          #EDF1FA;
+    --text-muted:    #99A2B8;
+    --text-faint:    #6B7690;
+
+    --primary:       #3D6BFF;
+    --primary-dim:   #26407A;
+    --primary-hover: #5C82FF;
+
+    --whats:         #1DBF5C;
+    --whats-hover:   #22D467;
+
+    --clay:          #FF8A5C; /* acento quente usado com moderação nos mockups */
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 26px;
+
+    --container: 1180px;
+    --shadow-lift: 0 24px 60px -24px rgba(0,0,0,0.65);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; margin:0; padding:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    line-height:1.15;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  p{ margin:0; }
+
+  :focus-visible{
+    outline:2px solid var(--primary-hover);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .container{
+    width:100%;
+    max-width:var(--container);
+    margin-inline:auto;
+    padding-inline:24px;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:-999px;
+    top:0;
+    background:var(--primary);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:0 0 8px 0;
+    z-index:200;
+  }
+  .skip-link:focus{ left:0; }
+
+  .section{ padding-block:88px; }
+  .section--tight{ padding-block:64px; }
+  @media (max-width:720px){
+    .section{ padding-block:64px; }
+  }
+
+  .section__head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section__kicker{
+    display:inline-block;
+    color:var(--primary-hover);
+    font-weight:600;
+    font-size:0.95rem;
+    margin-bottom:14px;
+  }
+  .section__title{
+    font-size:clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem);
+    color:var(--text);
+  }
+  .section__desc{
+    margin-top:14px;
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width:56ch;
+  }
+
+  /* =========================================================
+     BOTÕES
+     ========================================================= */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-height:50px;
+    padding:0 26px;
+    border-radius:12px;
+    border:1px solid transparent;
+    font-weight:600;
+    font-size:0.98rem;
+    transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .btn--whatsapp{
+    background:var(--whats);
+    color:#04170A;
+  }
+  .btn--whatsapp:hover{ background:var(--whats-hover); }
+
+  .btn--primary{
+    background:var(--primary);
+    color:#fff;
+  }
+  .btn--primary:hover{ background:var(--primary-hover); }
+
+  .btn--ghost{
+    background:transparent;
+    border-color:var(--border);
+    color:var(--text);
+  }
+  .btn--ghost:hover{ border-color:var(--primary-hover); color:var(--primary-hover); }
+
+  .btn--block{ width:100%; }
+  .btn--sm{ min-height:44px; padding:0 20px; font-size:0.9rem; }
+
+  /* =========================================================
+     HEADER
+     ========================================================= */
+  .header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(10,14,26,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .header__bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+  }
+  .brand__name{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.15rem;
+  }
+  .brand__name span{ color:var(--primary-hover); }
+  .brand__tag{
+    font-size:0.72rem;
+    color:var(--text-faint);
+    margin-top:2px;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+  .nav__link{
+    color:var(--text-muted);
+    font-size:0.95rem;
+    font-weight:500;
+    transition:color .15s ease;
+  }
+  .nav__link:hover{ color:var(--text); }
+
+  .header__actions{ display:flex; align-items:center; gap:14px; }
+
+  /* Em telas largas, o CTA já aparece em .header__actions, então
+     escondemos a versão duplicada dentro da navegação. */
+  .nav__cta{ display:none; }
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--border);
+    border-radius:10px;
+    width:48px;
+    height:48px;
+    align-items:center;
+    justify-content:center;
+  }
+  .menu-toggle span,
+  .menu-toggle span::before,
+  .menu-toggle span::after{
+    content:"";
+    display:block;
+    width:20px;
+    height:2px;
+    background:var(--text);
+    position:relative;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .menu-toggle span::before{ position:absolute; top:-6px; }
+  .menu-toggle span::after{ position:absolute; top:6px; }
+  .menu-toggle[aria-expanded="true"] span{ background:transparent; }
+  .menu-toggle[aria-expanded="true"] span::before{ transform:translateY(6px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span::after{ transform:translateY(-6px) rotate(-45deg); }
+
+  @media (max-width:900px){
+    .nav{
+      position:fixed;
+      inset:76px 0 0 0;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:4px;
+      background:var(--bg);
+      padding:20px 24px 30px;
+      transform:translateY(-8px);
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .2s ease, transform .2s ease, visibility .2s;
+      border-bottom:1px solid var(--border);
+    }
+    .nav.is-open{
+      opacity:1;
+      transform:translateY(0);
+      visibility:visible;
+    }
+    .nav__link{
+      width:100%;
+      padding:14px 4px;
+      border-bottom:1px solid var(--border);
+      font-size:1.05rem;
+    }
+    /* No mobile o CTA some do topo do header (fica só logo + hamburger)
+       e passa a aparecer dentro do menu suspenso, em largura total */
+    .header__actions .btn{ display:none; }
+    .nav__cta{
+      display:flex;
+      width:100%;
+      margin-top:14px;
+    }
+    .menu-toggle{ display:flex; }
+  }
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+  .hero{
+    padding-block:72px 96px;
+  }
+  .hero__grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero__title{
+    font-size:clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
+  }
+  .hero__title .highlight{
+    color:var(--primary-hover);
+  }
+  .hero__desc{
+    margin-top:22px;
+    color:var(--text-muted);
+    font-size:1.1rem;
+    max-width:52ch;
+  }
+  .hero__actions{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .hero__badge{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 16px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    color:var(--text-muted);
+    font-size:0.88rem;
+  }
+  .hero__badge svg{ width:16px; height:16px; color:var(--whats-hover); flex-shrink:0; }
+
+  /* --- mockup do celular no hero --- */
+  .phone-wrap{ display:flex; justify-content:center; }
+  .phone{
+    width:280px;
+    background:linear-gradient(180deg, #1B2338, #10152A);
+    border:1px solid var(--border);
+    border-radius:38px;
+    padding:16px 14px 22px;
+    box-shadow:var(--shadow-lift);
+  }
+  .phone__notch{
+    width:70px;
+    height:14px;
+    background:#05070E;
+    border-radius:10px;
+    margin:0 auto 14px;
+  }
+  .phone__screen{
+    background:var(--bg-elevated);
+    border-radius:22px;
+    padding:16px 14px;
+    min-height:340px;
+  }
+  .phone__chat-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding-bottom:14px;
+    margin-bottom:14px;
+    border-bottom:1px solid var(--border);
+  }
+  .phone__avatar{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--whats);
+    display:flex; align-items:center; justify-content:center;
+    color:#04170A; font-weight:700; font-size:0.8rem;
+  }
+  .phone__chat-name{ font-size:0.85rem; font-weight:600; }
+  .phone__chat-status{ font-size:0.72rem; color:var(--whats-hover); }
+
+  .phone__messages{ display:flex; flex-direction:column; gap:10px; }
+  .msg{
+    max-width:88%;
+    padding:10px 12px;
+    border-radius:12px;
+    font-size:0.8rem;
+    line-height:1.4;
+    opacity:0;
+    transform:translateY(10px);
+    animation:msgIn .45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change:transform, opacity;
+  }
+  .msg--in{
+    align-self:flex-start;
+    background:var(--surface-2);
+    border-top-left-radius:2px;
+  }
+  .msg__dot{
+    display:inline-block;
+    width:7px; height:7px;
+    border-radius:50%;
+    margin-right:6px;
+  }
+  @keyframes msgIn{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width:960px){
+    .hero__grid{ grid-template-columns:1fr; text-align:left; }
+    .phone-wrap{ margin-top:12px; }
+  }
+
+  @media (max-width:600px){
+    .hero__actions{ flex-direction:column; }
+    .hero__actions .btn{ width:100%; }
+  }
+
+  /* =========================================================
+     GRID / CARDS genéricos
+     ========================================================= */
+  .grid-4{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+  }
+  @media (max-width:1000px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .grid-4{ grid-template-columns:1fr; } }
+
+  .service-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:28px 24px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .service-card:hover{ border-color:var(--primary-dim); transform:translateY(-4px); }
+  .service-card__icon{
+    width:44px; height:44px;
+    border-radius:12px;
+    background:var(--primary-dim);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--primary-hover);
+    margin-bottom:18px;
+  }
+  .service-card__icon svg{ width:22px; height:22px; }
+  .service-card__title{ font-size:1.08rem; margin-bottom:8px; }
+  .service-card__desc{ color:var(--text-muted); font-size:0.94rem; }
+
+  /* =========================================================
+     SHOWCASE — modelos demonstrativos (tabs)
+     ========================================================= */
+  .showcase__tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:0;
+  }
+  .showcase__tab{
+    background:none;
+    border:none;
+    color:var(--text-muted);
+    font-weight:600;
+    font-size:0.95rem;
+    padding:12px 6px;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+  }
+  .showcase__tab.is-active{
+    color:var(--text);
+    border-bottom-color:var(--primary);
+  }
+
+  .showcase__panel{ display:none; }
+  .showcase__panel.is-active{ display:block; }
+
+  .mockup-browser{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    max-width:640px;
+  }
+  .mockup-browser__bar{
+    display:flex;
+    gap:6px;
+    padding:12px 16px;
+    border-bottom:1px solid var(--border);
+    background:var(--bg-elevated);
+  }
+  .mockup-browser__bar span{
+    width:9px; height:9px; border-radius:50%; background:var(--border);
+  }
+  .mockup-browser__content{ padding:26px 24px; }
+
+  .demo-menu-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .demo-menu-item:last-of-type{ border-bottom:none; }
+  .demo-menu-item__name{ font-weight:600; font-size:0.95rem; }
+  .demo-menu-item__desc{ color:var(--text-muted); font-size:0.82rem; margin-top:2px; }
+  .demo-menu-item__price{ font-weight:700; color:var(--clay); white-space:nowrap; }
+
+  .demo-service-row{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:14px;
+    padding:11px 0;
+    border-bottom:1px solid var(--border);
+    font-size:0.88rem;
+  }
+  .demo-service-row:last-of-type{ border-bottom:none; }
+  .demo-service-row span:nth-child(2){ color:var(--text-muted); }
+  .demo-service-row span:nth-child(3){ font-weight:700; color:var(--primary-hover); }
+
+  .demo-hours{
+    margin-top:16px;
+    color:var(--text-muted);
+    font-size:0.84rem;
+  }
+
+  .demo-pro{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+  .demo-pro__avatar{
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--primary-dim);
+    color:var(--primary-hover);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .demo-pro__name{ font-weight:600; }
+  .demo-pro__role{ color:var(--text-muted); font-size:0.85rem; margin-top:2px; }
+  .demo-pro__bio{ color:var(--text-muted); font-size:0.88rem; margin-top:10px; line-height:1.5; }
+
+  .demo-cta-row{ margin-top:20px; }
+
+  /* =========================================================
+     PROCESSO — passos
+     ========================================================= */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:800px){ .steps{ grid-template-columns:1fr; gap:20px; } }
+
+  .step{
+    position:relative;
+    padding:28px 22px 24px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+  }
+  .step__number{
+    font-family:var(--font-display);
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--primary-dim);
+    line-height:1;
+    margin-bottom:14px;
+  }
+  .step__title{ font-size:1.02rem; margin-bottom:8px; }
+  .step__desc{ color:var(--text-muted); font-size:0.92rem; }
+
+  /* =========================================================
+     PREÇOS
+     ========================================================= */
+  .pricing{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:stretch;
+  }
+  @media (max-width:800px){ .pricing{ grid-template-columns:1fr; } }
+
+  .price-card{
+    display:flex;
+    flex-direction:column;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:34px 30px;
+  }
+  .price-card--highlight{
+    border-color:var(--primary-dim);
+    background:linear-gradient(180deg, var(--surface), var(--bg-elevated));
+  }
+  .price-card__tag{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--primary-hover);
+    background:var(--primary-dim);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:16px;
+    width:fit-content;
+  }
+  .price-card__title{ font-size:1.3rem; margin-bottom:6px; }
+  .price-card__subtitle{ color:var(--text-muted); font-size:0.92rem; margin-bottom:20px; }
+  .price-card__amount{
+    font-family:var(--font-display);
+    font-size:2.3rem;
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .price-card__amount small{
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    color:var(--text-muted);
+    font-weight:500;
+  }
+  .price-card__note{ color:var(--text-faint); font-size:0.82rem; margin-bottom:24px; }
+
+  .price-list{ display:flex; flex-direction:column; gap:12px; margin-bottom:28px; flex-grow:1; }
+  .price-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:0.92rem;
+    color:var(--text);
+  }
+  .price-list svg{
+    width:18px; height:18px;
+    color:var(--whats-hover);
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  /* =========================================================
+     CTA FINAL
+     ========================================================= */
+  .cta-final{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:52px 40px;
+    text-align:center;
+  }
+  .cta-final__title{ font-size:clamp(1.5rem,1.2rem+1.2vw,2.1rem); margin-bottom:14px; }
+  .cta-final__desc{ color:var(--text-muted); max-width:52ch; margin:0 auto 28px; }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  .footer{
+    border-top:1px solid var(--border);
+    padding-block:48px 32px;
+  }
+  .footer__top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--border);
+  }
+  .footer__links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .footer__links a{ color:var(--text-muted); font-size:0.92rem; }
+  .footer__links a:hover{ color:var(--text); }
+
+  .footer__social{ display:flex; gap:12px; }
+  .footer__social a{
+    width:40px; height:40px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text-muted);
+  }
+  .footer__social a:hover{ color:var(--text); border-color:var(--primary-dim); }
+  .footer__social svg{ width:18px; height:18px; }
+
+  .footer__bottom{
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    color:var(--text-faint);
+    font-size:0.82rem;
+  }
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+<!-- ============================================================
+     CABEÇALHO
+     ============================================================ -->
+<header class="header">
+  <div class="container header__bar">
+    <a href="#topo" class="brand">
+      <!-- ALTERE: nome/marca -->
+      <span class="brand__name">Nome<span>Sobrenome</span></span>
+      <span class="brand__tag">Desenvolvimento Web</span>
+    </a>
+
+    <nav class="nav" id="mainNav">
+      <a class="nav__link" href="#servicos">Serviços</a>
+      <a class="nav__link" href="#modelos">Modelos</a>
+      <a class="nav__link" href="#como-funciona">Como Funciona</a>
+      <a class="nav__link" href="#contato">Contato</a>
+      <a class="btn btn--whatsapp btn--sm nav__cta" data-whatsapp-cta data-whatsapp-msg="Olá! Vi seu site e gostaria de um orçamento para a minha empresa.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="btn btn--whatsapp btn--sm" data-whatsapp-cta data-whatsapp-msg="Olá! Vi seu site e gostaria de um orçamento para a minha empresa.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="topo">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="hero__title">Sua empresa <span class="highlight">recebendo clientes novos</span> direto no WhatsApp</h1>
+        <p class="hero__desc">Crio sites e landing pages rápidas, modernas e pensadas para vender — feitas sob medida para hamburguerias, oficinas, barbearias e clínicas que querem parar de depender só do boca a boca.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--whatsapp" data-whatsapp-cta data-whatsapp-msg="Olá! Vi seu site e gostaria de solicitar um orçamento gratuito para a minha empresa.">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>
+            Solicitar Orçamento Gratuito
+          </a>
+          <a class="btn btn--ghost" href="#modelos">Ver modelos prontos</a>
+        </div>
+
+        <div class="hero__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Sites 100% otimizados para celular e Google
+        </div>
+      </div>
+
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="phone__chat-head">
+              <div class="phone__avatar">SN</div>
+              <div>
+                <div class="phone__chat-name">Seu Site</div>
+                <div class="phone__chat-status">online</div>
+              </div>
+            </div>
+            <div class="phone__messages">
+              <div class="msg msg--in" style="animation-delay:.2s">
+                <span class="msg__dot" style="background:var(--clay)"></span>Novo pedido pelo cardápio digital 🍔
+              </div>
+              <div class="msg msg--in" style="animation-delay:.6s">
+                <span class="msg__dot" style="background:var(--primary-hover)"></span>Agendamento confirmado para hoje às 16h
+              </div>
+              <div class="msg msg--in" style="animation-delay:1s">
+                <span class="msg__dot" style="background:var(--whats-hover)"></span>Nova consulta marcada pelo site
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVIÇOS
+       ============================================================ -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__kicker">O que eu faço</span>
+        <h2 class="section__title">Tudo que o seu negócio precisa para vender online</h2>
+        <p class="section__desc">Do primeiro rascunho até o site no ar — cuido de cada detalhe técnico para que você só precise se preocupar em atender os novos clientes.</p>
+      </div>
+
+      <div class="grid-4">
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+          </div>
+          <h3 class="service-card__title">Landing Pages Comerciais</h3>
+          <p class="service-card__desc">Páginas focadas em um único objetivo: transformar visitantes em mensagens no seu WhatsApp.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4z"/><path d="M4 12h10M4 16h7M4 8v12h16V8"/></svg>
+          </div>
+          <h3 class="service-card__title">Cardápios &amp; Catálogos Digitais</h3>
+          <p class="service-card__desc">Seu cardápio ou catálogo sempre atualizado, com link direto para pedidos pelo WhatsApp.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 3 4 14h7l-1 7 10-13h-7l0-5z"/></svg>
+          </div>
+          <h3 class="service-card__title">Otimização &amp; Velocidade</h3>
+          <p class="service-card__desc">Sites que carregam quase instantaneamente — porque cliente com pressa não espera a página abrir.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </div>
+          <h3 class="service-card__title">Manutenção &amp; Suporte Contínuo</h3>
+          <p class="service-card__desc">Hospedagem, atualizações e pequenos ajustes — seu site sempre no ar e sempre atual.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MODELOS DEMONSTRATIVOS
+       ============================================================ -->
+  <section class="section" id="modelos" style="background:var(--bg-elevated); border-block:1px solid var(--border);">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__kicker">Modelos demonstrativos</span>
+        <h2 class="section__title">Veja como o seu site pode ficar</h2>
+        <p class="section__desc">Três exemplos reais de como eu adapto o mesmo modelo de página para negócios diferentes. Clique nas abas abaixo.</p>
+      </div>
+
+      <div class="showcase">
+        <div class="showcase__tabs" role="tablist" aria-label="Modelos demonstrativos">
+          <button class="showcase__tab is-active" role="tab" aria-selected="true" tabindex="0" id="tab-hamburgueria" aria-controls="painel-hamburgueria" data-target="painel-hamburgueria">Hamburgueria</button>
+          <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="tab-oficina" aria-controls="painel-oficina" data-target="painel-oficina">Oficina / Barbearia</button>
+          <button class="showcase__tab" role="tab" aria-selected="false" tabindex="-1" id="tab-clinica" aria-controls="painel-clinica" data-target="painel-clinica">Clínica</button>
+        </div>
+
+        <div class="showcase__panels">
+
+          <!-- Exemplo 1: Hamburgueria -->
+          <div class="showcase__panel is-active" id="painel-hamburgueria" role="tabpanel" aria-labelledby="tab-hamburgueria">
+            <div class="mockup-browser">
+              <div class="mockup-browser__bar"><span></span><span></span><span></span></div>
+              <div class="mockup-browser__content">
+                <h3 style="margin-bottom:16px;">Cardápio — Point do Burger</h3>
+                <div class="demo-menu-item">
+                  <div>
+                    <div class="demo-menu-item__name">Clássico Artesanal</div>
+                    <div class="demo-menu-item__desc">Blend 160g, queijo cheddar, cebola caramelizada</div>
+                  </div>
+                  <div class="demo-menu-item__price">R$ 28</div>
+                </div>
+                <div class="demo-menu-item">
+                  <div>
+                    <div class="demo-menu-item__name">Duplo Bacon</div>
+                    <div class="demo-menu-item__desc">Dois blends, bacon crocante, molho da casa</div>
+                  </div>
+                  <div class="demo-menu-item__price">R$ 34</div>
+                </div>
+                <div class="demo-menu-item">
+                  <div>
+                    <div class="demo-menu-item__name">Veggie Grelhado</div>
+                    <div class="demo-menu-item__desc">Hambúrguer de grão-de-bico, rúcula, tomate seco</div>
+                  </div>
+                  <div class="demo-menu-item__price">R$ 26</div>
+                </div>
+                <div class="demo-cta-row">
+                  <a class="btn btn--whatsapp btn--sm" data-whatsapp-cta data-whatsapp-msg="Olá! Vi o cardápio digital e quero fazer um pedido."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>Pedir pelo WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exemplo 2: Oficina / Barbearia -->
+          <div class="showcase__panel" id="painel-oficina" role="tabpanel" aria-labelledby="tab-oficina">
+            <div class="mockup-browser">
+              <div class="mockup-browser__bar"><span></span><span></span><span></span></div>
+              <div class="mockup-browser__content">
+                <h3 style="margin-bottom:16px;">Serviços — Barbearia Vintage</h3>
+                <div class="demo-service-row"><span>Corte masculino</span><span>30 min</span><span>R$ 45</span></div>
+                <div class="demo-service-row"><span>Barba completa</span><span>25 min</span><span>R$ 35</span></div>
+                <div class="demo-service-row"><span>Corte + Barba</span><span>50 min</span><span>R$ 70</span></div>
+                <div class="demo-hours">Seg a Sáb · 09h às 19h — Domingo fechado</div>
+                <div class="demo-cta-row">
+                  <a class="btn btn--whatsapp btn--sm" data-whatsapp-cta data-whatsapp-msg="Olá! Gostaria de agendar um horário."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>Agendar horário</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exemplo 3: Clínica -->
+          <div class="showcase__panel" id="painel-clinica" role="tabpanel" aria-labelledby="tab-clinica">
+            <div class="mockup-browser">
+              <div class="mockup-browser__bar"><span></span><span></span><span></span></div>
+              <div class="mockup-browser__content">
+                <div class="demo-pro">
+                  <div class="demo-pro__avatar">DR</div>
+                  <div>
+                    <div class="demo-pro__name">Dra. Carla Nogueira</div>
+                    <div class="demo-pro__role">Clínico Geral — CRM 00000</div>
+                  </div>
+                </div>
+                <p class="demo-pro__bio">Atendimento humanizado com foco em prevenção e acompanhamento contínuo. Consultas presenciais e por telemedicina.</p>
+                <div class="demo-cta-row">
+                  <a class="btn btn--whatsapp btn--sm" data-whatsapp-cta data-whatsapp-msg="Olá! Gostaria de marcar uma consulta."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>Marcar Consulta</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMO FUNCIONA
+       ============================================================ -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__kicker">Processo</span>
+        <h2 class="section__title">Como funciona, do início ao site no ar</h2>
+        <p class="section__desc">Um processo simples, sem enrolação, para você saber exatamente o que esperar em cada etapa.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3 class="step__title">Diagnóstico e alinhamento</h3>
+          <p class="step__desc">Conversamos sobre o seu negócio, seus clientes e o que a página precisa comunicar para gerar resultado.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Design e desenvolvimento</h3>
+          <p class="step__desc">Crio a estrutura e o visual da página com foco em conversão, já integrada ao seu WhatsApp.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3 class="step__title">Validação e publicação</h3>
+          <p class="step__desc">Você revisa, pede os ajustes necessários e, assim que aprovar, colocamos o site no ar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PREÇOS
+       ============================================================ -->
+  <section class="section" id="precos" style="background:var(--bg-elevated); border-block:1px solid var(--border);">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__kicker">Investimento</span>
+        <h2 class="section__title">Planos claros, sem letra miúda</h2>
+        <p class="section__desc">Separo o que é criação do que é manutenção — assim você sabe exatamente pelo que está pagando.</p>
+      </div>
+
+      <div class="pricing">
+        <!-- ALTERE os valores conforme a sua tabela de preços -->
+        <div class="price-card">
+          <span class="price-card__tag">Taxa única</span>
+          <h3 class="price-card__title">Criação da Página</h3>
+          <p class="price-card__subtitle">Ideal para quem ainda não tem site ou quer recomeçar do zero.</p>
+          <div class="price-card__amount">R$ 697<small>&nbsp;/ projeto</small></div>
+          <p class="price-card__note">Pagamento único na entrega</p>
+          <ul class="price-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Design personalizado para o seu negócio</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Até 5 seções (serviços, sobre, contato etc.)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Integração com WhatsApp e formulário</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Otimizado para celular e para o Google</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Código-fonte entregue para você</li>
+          </ul>
+          <a class="btn btn--primary btn--block" data-whatsapp-cta data-whatsapp-msg="Olá! Quero criar meu site — pode me passar mais detalhes sobre o plano de Criação da Página?">Quero criar meu site</a>
+        </div>
+
+        <div class="price-card price-card--highlight">
+          <span class="price-card__tag">Mensal</span>
+          <h3 class="price-card__title">Manutenção &amp; Hospedagem</h3>
+          <p class="price-card__subtitle">Para manter seu site rápido, seguro e sempre atualizado.</p>
+          <div class="price-card__amount">R$ 49,90<small>&nbsp;/ mês</small></div>
+          <p class="price-card__note">Cancele quando quiser</p>
+          <ul class="price-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Hospedagem rápida incluída</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Domínio .com.br ativo</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Certificado de segurança SSL</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Pequenas alterações mensais incluídas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Suporte direto pelo WhatsApp</li>
+          </ul>
+          <a class="btn btn--whatsapp btn--block" data-whatsapp-cta data-whatsapp-msg="Olá! Tenho interesse no Plano de Manutenção e Hospedagem. Pode me explicar melhor?"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>Quero esse plano</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL / CONTATO
+       ============================================================ -->
+  <section class="section" id="contato">
+    <div class="container">
+      <div class="cta-final">
+        <h2 class="cta-final__title">Pronto para o seu negócio vender mais online?</h2>
+        <p class="cta-final__desc">Me chame agora no WhatsApp e receba um orçamento gratuito, sem compromisso, em poucos minutos.</p>
+        <a class="btn btn--whatsapp" data-whatsapp-cta data-whatsapp-msg="Olá! Vi seu site e gostaria de um orçamento para a minha empresa.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>
+          Chamar no WhatsApp agora
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     RODAPÉ
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <ul class="footer__links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#modelos">Modelos</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <!-- ALTERE os links de redes sociais abaixo (href="#") -->
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/></svg>
+        </a>
+        <a id="footerWhatsapp" href="#" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5C10.9 9 10.4 7.7 10.2 7.2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2h.1c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1h-.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.1 12 20.1z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; <span id="currentYear"></span> Nome Sobrenome. Todos os direitos reservados.</span>
+      <span>Desenvolvido com alta performance web</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     CONFIGURAÇÃO DO WHATSAPP
+     ALTERE apenas os valores abaixo com o seu número e mensagem.
+     Formato do número: código do país + DDD + número, só dígitos.
+     Exemplo: 55 (Brasil) + 11 (DDD) + 999999999
+     ========================================================= */
+  const WHATSAPP_CONFIG = {
+    numero: "5511999999999", // <-- TROQUE pelo seu número de WhatsApp
+    mensagemPadrao: "Olá! Vi seu site e gostaria de um orçamento para a minha empresa."
+  };
+
+  function gerarLinkWhatsApp(mensagem){
+    const texto = encodeURIComponent(mensagem || WHATSAPP_CONFIG.mensagemPadrao);
+    return "https://wa.me/" + WHATSAPP_CONFIG.numero + "?text=" + texto;
+  }
+
+  // Aplica o link do WhatsApp em todos os botões marcados com [data-whatsapp-cta]
+  document.querySelectorAll("[data-whatsapp-cta]").forEach(function(el){
+    const mensagemCustom = el.getAttribute("data-whatsapp-msg");
+    el.setAttribute("href", gerarLinkWhatsApp(mensagemCustom));
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener noreferrer");
+  });
+
+  const footerWhats = document.getElementById("footerWhatsapp");
+  if (footerWhats) {
+    footerWhats.setAttribute("href", gerarLinkWhatsApp());
+    footerWhats.setAttribute("target", "_blank");
+    footerWhats.setAttribute("rel", "noopener noreferrer");
+  }
+
+  /* =========================================================
+     MENU MOBILE
+     ========================================================= */
+  const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+
+  if (menuToggle && nav){
+    menuToggle.addEventListener("click", function(){
+      const aberto = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!aberto));
+      menuToggle.setAttribute("aria-label", aberto ? "Abrir menu" : "Fechar menu");
+      nav.classList.toggle("is-open");
+    });
+
+    // Fecha o menu ao clicar em um link (rolagem suave já é tratada pelo CSS)
+    nav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){
+        nav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+      });
+    });
+  }
+
+  /* =========================================================
+     ABAS — MODELOS DEMONSTRATIVOS
+     Suporta clique, setas (◀ ▶) para navegar entre abas e
+     Enter/Espaço para ativar a aba focada (padrão WAI-ARIA Tabs).
+     ========================================================= */
+  const tabs = Array.from(document.querySelectorAll(".showcase__tab"));
+
+  function ativarAba(tab){
+    const targetId = tab.getAttribute("data-target");
+
+    tabs.forEach(function(t){
+      t.classList.remove("is-active");
+      t.setAttribute("aria-selected", "false");
+      t.setAttribute("tabindex", "-1");
+    });
+    document.querySelectorAll(".showcase__panel").forEach(function(p){
+      p.classList.remove("is-active");
+    });
+
+    tab.classList.add("is-active");
+    tab.setAttribute("aria-selected", "true");
+    tab.setAttribute("tabindex", "0");
+    document.getElementById(targetId).classList.add("is-active");
+  }
+
+  tabs.forEach(function(tab, index){
+    tab.addEventListener("click", function(){
+      ativarAba(tab);
+    });
+
+    tab.addEventListener("keydown", function(e){
+      let novoIndex = null;
+
+      switch(e.key){
+        case "ArrowRight":
+        case "ArrowDown":
+          novoIndex = (index + 1) % tabs.length;
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          novoIndex = (index - 1 + tabs.length) % tabs.length;
+          break;
+        case "Home":
+          novoIndex = 0;
+          break;
+        case "End":
+          novoIndex = tabs.length - 1;
+          break;
+        case "Enter":
+        case " ":
+        case "Spacebar":
+          e.preventDefault();
+          ativarAba(tab);
+          return;
+        default:
+          return;
+      }
+
+      // Setas movem o foco entre as abas (o usuário confirma com Enter/Espaço)
+      e.preventDefault();
+      tabs.forEach(function(t){ t.setAttribute("tabindex", "-1"); });
+      tabs[novoIndex].setAttribute("tabindex", "0");
+      tabs[novoIndex].focus();
+    });
+  });
+
+  /* =========================================================
+     ANO ATUAL NO RODAPÉ
+     ========================================================= */
+  const yearEl = document.getElementById("currentYear");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+})();
+</script>
+
+</body>
+</html>
