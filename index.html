@@ -270,20 +270,29 @@
   .menu-toggle[aria-expanded="true"] span::before{ transform:translateY(6px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span::after{ transform:translateY(-6px) rotate(-45deg); }
 
-  @media (max-width:900px){
+ @media (max-width:900px){
     .nav{
       position:fixed;
       inset:76px 0 0 0;
       flex-direction:column;
       align-items:flex-start;
       gap:4px;
-      background:var(--bg);
+      /* Define fundo escuro 100% opaco para cobrir a página */
+      background-color: #0b0f17; 
       padding:20px 24px 30px;
       transform:translateY(-8px);
       opacity:0;
       visibility:hidden;
       transition:opacity .2s ease, transform .2s ease, visibility .2s;
       border-bottom:1px solid var(--border);
+      
+      /* Garante que o menu fique por cima do celular e dos botões da página */
+      z-index: 999; 
+      /* Sombra intensa para destacar o menu suspenso do fundo */
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8); 
+      /* Permite rolar o menu em telas pequenas se necessário */
+      max-height: calc(100vh - 76px);
+      overflow-y: auto;
     }
     .nav.is-open{
       opacity:1;
@@ -306,7 +315,6 @@
     }
     .menu-toggle{ display:flex; }
   }
-
   /* =========================================================
      HERO
      ========================================================= */
